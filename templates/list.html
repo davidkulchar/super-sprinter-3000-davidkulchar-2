@@ -1,0 +1,51 @@
+<head>
+    <title>Super Sprinter 3000</title>
+    <link rel=stylesheet type=text/css href={{ url_for('static', filename='css/bootstrap-theme.css') }} />
+</head>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+      <a class="navbar-brand" href="/"><b>Super Sprinter 3000</b></a>
+      <ul class="nav navbar-nav navbar-right">
+          <li> <a href="/story" >New US</a> </li>
+      <li><a href="/" >Home</a></li></ul>
+  </div></nav>
+{% block body %}
+    <div align=center>
+    {% if entries %}
+        <div class=container>
+    <table class="table">
+        <thead class="thead-inverse">
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>UserStory</th>
+        <th>Acceptence criteria</th>
+        <th>BV.</th>
+        <th>Est.</th>
+        <th>Status</th>
+        <th>Refactor</th>
+        </tr>
+    </thead>
+    {% endif %}
+  {% for entry in entries %}
+      <tr>
+        <td>{{ entry.id }}</td>
+        <td>{{ entry.title }}</td>
+        <td>{{ entry.story_text }}</td>
+        <td>{{ entry.acceptance_criteria }}</td>
+        <td>{{ entry.buisness_value }}</td>
+        <td>{{ entry.estimation }}</td>
+        <td>{{ entry.status }}</td>
+        <td><a href="/story/{{ entry.id }}"><img src="/static/edit.png" alt="Edit US" width="20" height="20"></a>
+             <a href="/delete/{{ entry.id }}"><img src="/static/delete.png" alt="Delete US" width="20" height="20" onclick="return confirm('Are you sure?')"></a></td>
+      </tr>
+
+  {% else %}
+      <h2 >Unbelievable.  No entries here so far?!</h2>
+  {% endfor %}
+</table>
+        </div>
+    <br>
+    <div class="butn"> <a href="/story" >Add new story</a></div>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "form_.html" %}
+{% block body %}
+    <body>
+    <h2 align="center">Edit UserStory {{ story.id }}</h2>
+ <div class="container-form">
+    <form action="{{ url_for('update_us') }}" method="post" class=update-us>
+    <input type=hidden name=id value={{ story.id }}>
+        <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-tower"></span></span>
+                <input value="{{ story.title }}" type="text" name=title class="form-control" placeholder="Title" >
+        </div><br/>
+        <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+            <input value="{{ story.story_text }}" type=text name=story_text class="form-control" placeholder="User Story">
+        </div><br/>
+        <textarea name="acceptance_criteria" value="{{ story.story_text }}" type=text placeholder="Acceptance criteria" rows="6" style="width: 100%">{{ story.acceptance_criteria }}</textarea><br/>
+        <br/>
+        <div class="row">
+            <div class="col-xs-4">
+        <div class="input-group">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-hourglass" aria-hidden="true"></span></span>
+            <input value={{ story.estimation}} type=number name=estimation min=0.5 max=40 step=0.5 value=0.5 class="form-control" style="width: 100%"></div></div>
+        <div class="col-xs-4">
+            <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-euro"></span></span>
+                <input value={{ story.buisness_value}} class="form-control" type=number name=buisness_value min=100 max=1500 step=100 value=100 style="width: 100%"></div></div>
+        <div class="col-xs-4">
+            <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-signal" id="basic-addon5"></span></span>
+            <select name=status class="form-control" style="width: 100%" selected={{ story.status }}>
+                <option value="done" {% if story.status=="done" %} selected{% endif %}>Done</option>
+                <option value="review" {% if story.status=="review" %} selected{% endif %}>Review</option>
+                <option value="in_progress"{% if story.status=="in_progress" %} selected{% endif %}>In Progress</option>
+                <option value="to_do"{% if story.status=="to_do" %} selected{% endif %}>To Do</option>
+                <option value="planning"{% if story.status=="planning" %} selected{% endif %}>Planning</option>
+            </select></div></div>
+            <br/><br/><br/>
+        <p align=center ><input type=submit class="btn btn-default" value="Update"></p>
+    </body>
+{% endblock %}

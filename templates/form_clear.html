@@ -1,0 +1,44 @@
+{% extends "form_.html" %}
+{% block body%}
+    <script>
+  $( function() {
+    $( document ).tooltip();
+  } );
+  </script>
+    <body>
+    <h2 align=center> Add new UserStory</h2>
+ <div class="container-form">
+    <form action="{{ url_for('new_us') }}" method="post" class=add-us>
+        <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-tower"></span></span>
+                <input required title="Story Title" type="text" name=title class="form-control">
+        </div><br/>
+        <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+            <input required title="User Story" type=text name=story_text class="form-control" placeholder="User Story">
+        </div><br/>
+        <textarea required title="Acceptance criteria" name="acceptance_criteria" type=text placeholder="Acceptance criteria" rows="6" style="width: 100%"></textarea><br/><br/>
+        <div class="row">
+            <div class="col-xs-4">
+        <div class="input-group">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-hourglass" aria-hidden="true"></span></span>
+            <input title="Estimation" type=number  name=estimation min=0.5 max=40 step=0.5 value=0.5 class="form-control" style="width: 100%"></div></div>
+        <div class="col-xs-4">
+            <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-euro"></span></span>
+                <input title="Buiseness value" class="form-control" type=number name=buisness_value min=100 max=1500 step=100 value=100 style="width: 100%"></div></div>
+        <div class="col-xs-4">
+            <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-signal" id="basic-addon5"></span></span>
+            <select title="Status" name=status class="form-control" style="width: 100%">
+                <option value="done">Done</option>
+                <option value="review">Review</option>
+                <option value="in_progress">In Progress</option>
+                <option value="to_do">To Do</option>
+                <option value="planning">Planning</option>
+            </select></div></div>
+            <br/><br/><br/>
+        <p align=center><input type=submit class="btn btn-default" value="Create"></p>
+    </form></div></body>
+{% endblock %}

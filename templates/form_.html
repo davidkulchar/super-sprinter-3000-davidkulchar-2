@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+<script src="../static/js/data-toogle.js"></script>
+    <meta charset="UTF-8">
+    {% if story %}
+    <title>Edit UserStory {{ story.id }}</title>
+    {% else %}
+    <title>Add new UserStory</title>
+    {% endif %}
+    <link rel=stylesheet type=text/css href={{ url_for('static', filename='css/bootstrap-theme.css') }} />
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+      <a class="navbar-brand" href="/"><b>Super Sprinter 3000</b></a>
+      <ul class="nav navbar-nav navbar-right">
+          <li> <a href="/story" >New US</a> </li>
+      <li><a href="/" >Home</a></li></ul>
+  </div></nav>
+{% block body %}
+{% endblock %}
+
